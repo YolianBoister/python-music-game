@@ -17,16 +17,17 @@ def check():
 
 check()
 f = open("data.txt")
+content = f.readlines()
 
 def line_func():
-    input_line = 0
-    content = f.readlines()
     valid_range = False
     list_size = len(content)
     print(list_size)
     while not valid_range:
         try:
             input_line = int(input("Choose line"))
+            print(list_size)
+            print(content)
             if input_line >= 0 and input_line <= list_size:
                 valid_range = True
         except ValueError:

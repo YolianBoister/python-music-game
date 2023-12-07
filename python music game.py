@@ -4,7 +4,6 @@ print("Only these users are allowed to play: Fred, Billy, Jack")
 
 #make an array/list to verify that the user's input = auth_users
 auth_users = ["Fred", "Billy", "Jack", "fred", "billy", "jack"]
-
 #make a function that asks the user for their name and denies
 #and loops until the user inputs a correct user
 def check():
@@ -15,7 +14,26 @@ def check():
     else:
         print("Unauthorised user try again!")
         check()
+
 check()
-
 f = open("data.txt")
+content = f.readlines()
 
+def line_func():
+    valid_range = False
+    list_size = len(content)
+    while not valid_range:
+        try:
+            input_line = int(input("Choose line"))
+            if input_line >= 0 and input_line <= list_size:
+                valid_range = True
+            else:
+                print("Not a valid line number")
+        except ValueError:
+            print("Not a valid line number")
+            
+    input_line = input_line - 1
+    print(content[input_line])
+    print("finished")
+    line_func()
+line_func()

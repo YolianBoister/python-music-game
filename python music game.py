@@ -22,18 +22,18 @@ content = f.readlines()
 def line_func():
     valid_range = False
     list_size = len(content)
-    print(list_size)
     while not valid_range:
         try:
             input_line = int(input("Choose line"))
-            print(list_size)
-            print(content)
             if input_line >= 0 and input_line <= list_size:
                 valid_range = True
+            else:
+                print("Not a valid line number")
         except ValueError:
             print("Not a valid line number")
             
     input_line = input_line - 1
     print(content[input_line])
+    print("finished")
     line_func()
 line_func()

@@ -8,10 +8,14 @@ auth_users = ["Fred", "Billy", "Jack", "fred", "billy", "jack"]
 #makes a function that asks the user for their name and denies access
 #until any of the values of auth_users are inputted.
 def check():
+    global debug_mode
+    debug_mode = False
     input_name = input("What is your name?")
     if input_name in auth_users:
         print("Authorised ")
-        
+    elif input_name == ("debug"):
+        debug_mode = True
+        print("Debug mode enabled")
     else:
         print("Unauthorised user try again!")
         check()
@@ -32,13 +36,17 @@ def line_func():
             if input_line >= 0 and input_line <= list_size:
                 valid_range = True
             else:
-                print("Not a valid line number")
+                print("Out of range")
         except ValueError:
-            print("Not a valid line number")
+            print("Invalid value")
     #user input is decreased so that: user input == line number
     input_line = input_line - 1
     #test prints
+    print("")
     print(content[input_line])
+    print("Within range:",valid_range)
+    print("Content of file:",content)
+    print("")
     print("finished")
     #loop for testing
     line_func()
@@ -49,5 +57,7 @@ check()
 f = open("data.txt")
 content = f.readlines()
 
-line_func()
+if debug_mode == True:
+    line_func()
+
 

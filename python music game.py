@@ -53,11 +53,39 @@ def line_func():
 
 check()
 
-#opens data.txt file and assigns content of files to content (list)
+#creates object of Song with properties of songtitle and artist
+class Song_class:
+    def __init__(self, songtitle, artist):
+        self.songtitle = songtitle
+        self.artist = artist
+    
+#opens data.txt file
 f = open("data.txt")
-content = f.readlines()
+file_path = "data.txt"
+song_list = []
 
+with open(file_path, "r") as content:
+    #assigns content of files to content (list)
+    lines = content.readlines()
+
+    for line in lines:
+        #splits every line into songtitle and artist
+        data = line.strip().split(",")
+        #checks if there are 2 elements per line (separated by ,)
+        if len(data) >= 2:
+            #assigns first values per line to songtitle
+            #and second value per line to artist
+            songtitle, artist = data[0], data[1]
+            #
+            song = Song_class(songtitle, artist)
+            song_list.append(song)
+        else:
+            print("No , separating songtitle and artist")
+
+print("content:", content)
+for song in song_list:
+    print(f"Song Title: {song.songtitle} Artist: {song.artist}")
+
+#line_func currently broken
 if debug_mode == True:
     line_func()
-
-

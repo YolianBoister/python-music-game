@@ -76,7 +76,6 @@ with open(file_path, "r") as content:
             #assigns first values per line to songtitle
             #and second value per line to artist
             songtitle, artist = data[0], data[1]
-            #
             song = Song_class(songtitle, artist)
             song_list.append(song)
         else:

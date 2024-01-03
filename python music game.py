@@ -27,6 +27,8 @@ class Song_class:
     def __init__(self, songtitle, artist):
         self.songtitle = songtitle
         self.artist = artist
+    def __repr__(self):
+        return(f"Song Title: {song.songtitle} Artist: {song.artist}")
 
 check()
 #opens data.txt file
@@ -55,5 +57,10 @@ with open(file_path, "r") as content:
 for song in song_list:
     print(f"Song Title: {song.songtitle} Artist: {song.artist}")
 
-random_num = random.randint(1,list_size)
+random_num = random.randint(0,list_size)
+print("Random num", random_num)
+print("Song list:", song_list)
+for song in song_list:
+    chosen_line = data + song.songtitle
+    print("Chosen line", chosen_line)
 
